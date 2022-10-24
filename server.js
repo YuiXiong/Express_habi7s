@@ -7,11 +7,20 @@ const cors = require('cors');
 const app = express()
 const port = process.env.PORT || 8000
 
-app.use(cors({ origin: process.env.CORS_ORIGIN }));
+const authRouter = require('./routers/authRoutes')
+
+app.use( cors ({
+    origin: "*",
+  })
+);
+app.use(express.json());
+app.use("/api/v1/auth", authRouter);
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send("append /api/v1/...");
 })
+
+
 
 app.listen(port, async () => {
     try {
