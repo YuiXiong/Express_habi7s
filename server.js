@@ -17,7 +17,7 @@ app.use(express.json());
 app.use("/api/v1/auth", authRouter);
 
 app.get('/', (req, res) => {
-  res.send("append /api/v1/...");
+  res.send("u have forgotten to append /api/v1/...");
 })
 
 
