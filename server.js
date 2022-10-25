@@ -8,6 +8,7 @@ const app = express()
 const port = process.env.PORT || 8000
 
 const authRouter = require('./routers/authRoutes')
+const boardRouter = require('./routers/boardRoutes')
 
 app.use( cors ({
     origin: "*",
@@ -15,6 +16,7 @@ app.use( cors ({
 );
 app.use(express.json());
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/board", boardRouter);
 
 app.get('/', (req, res) => {
   res.send("u have forgotten to append /api/v1/...");
