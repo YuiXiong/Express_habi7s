@@ -3,6 +3,6 @@ const router = express.Router()
 const boardController = require('../controllers/boardController')
 
 router.post("/", boardController.create);
-// router.post('/login', authController.login)
+router.get("/", boardController.read)
 
 module.exports = router

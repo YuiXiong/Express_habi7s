@@ -31,4 +31,18 @@ module.exports = {
       
           return res.json();
         },
+
+    read: async (req,res) => {
+        //returns json object of board collection
+        let boards =[]
+        try{
+         boards= await boardModel.find({});
+         console.log('boards detail: ', boards)
+        } catch {
+            res.send(500);
+            return res.json({error: "failed to return board"})
+        }
+        return res.json(boards);
+    },
+
 }
