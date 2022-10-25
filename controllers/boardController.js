@@ -57,4 +57,22 @@ module.exports = {
     }
     return res.json(board);
   },
+
+  updateBoardbyId: async(req, res) => {
+    let board = null;
+    try {
+      board = await boardModel.findByIdAndUpdate(req.params.id, { name : req.body.name });
+    } catch (err) {
+      res.status(500);
+      return res.json({ error: `Fail to get id ${req.params.id}` });
+    }
+
+    if (!board) {
+      res.status(404);
+      return res.json(board);
+    }
+
+    return res.json({});
+  },
+
 };
