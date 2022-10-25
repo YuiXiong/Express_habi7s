@@ -32,7 +32,7 @@ module.exports = {
     return res.json();
   },
 
-  indexBoards: async (req, res) => {
+  index: async (req, res) => {
     //returns json object of board collection
     let boards = [];
 
@@ -46,7 +46,7 @@ module.exports = {
     return res.json(boards);
   },
 
-  getBoardbyId: async (req, res) => {
+  getById: async (req, res) => {
     let board = [];
 
     try {
@@ -58,10 +58,12 @@ module.exports = {
     return res.json(board);
   },
 
-  updateBoardbyId: async(req, res) => {
+  updateById: async (req, res) => {
     let board = null;
     try {
-      board = await boardModel.findByIdAndUpdate(req.params.id, { name : req.body.name });
+      board = await boardModel.findByIdAndUpdate(req.params.id, {
+        name: req.body.name,
+      });
     } catch (err) {
       res.status(500);
       return res.json({ error: `Fail to get id ${req.params.id}` });
@@ -75,4 +77,21 @@ module.exports = {
     return res.json({});
   },
 
+  deleteById: async (req, res) => {
+    let board = null;
+    try {
+      board = await boardModel.findById(req.params.id);
+    } catch (err) {
+      res.status(500);
+      return res.json({ error: `Fail to get id ${req.params.id}` });
+    }
+    try {
+      await board.delete();
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ error: "failed to delete board" });
+    }
+
+    return res.json();
+  },
 };
