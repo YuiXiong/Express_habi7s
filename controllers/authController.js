@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 module.exports = {
   register: async (req, res) => {
     //rmb do validations
-    const validatedValues = req.body;
+    const validatedValues = req.body
 
     try {
       const user = await userModel.findOne({ email: validatedValues.email });

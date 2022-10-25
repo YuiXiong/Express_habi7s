@@ -6,10 +6,10 @@ const boardSchema = new mongoose.Schema({
     required: true,
   },
   tasks: {
-    type: String,
+    type: Array,
   },
   owner: {
-    type: Array,
+    type: mongoose.ObjectId ,
   },
   shared: {
     type: Array,
