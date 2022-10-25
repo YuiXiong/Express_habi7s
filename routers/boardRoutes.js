@@ -3,6 +3,8 @@ const router = express.Router()
 const boardController = require('../controllers/boardController')
 
 router.post("/", boardController.create);
-router.get("/", boardController.read)
+router.get("/", boardController.indexBoards)
+router.get("/:id", boardController.getBoardbyId)
+
 
 module.exports = router
