@@ -6,7 +6,11 @@ const taskSchema = new mongoose.Schema({
   },
   quadrant: {
     type: String,
-    enum: ['urgentImportant', 'urgentNotImportant', 'notUrgentImportant', 'notUrgentNotImportant']
+    enum: ["urgentImportant", "urgentNotImportant", "notUrgentImportant", "notUrgentNotImportant"]
+  },
+  board: {
+    type: mongoose.Types.ObjectId,
+    ref: "Board"
   },
   dueAt: {
     type: Date,

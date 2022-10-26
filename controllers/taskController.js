@@ -10,6 +10,7 @@ module.exports = {
         //create task
         try {
           await taskModel.create(input);
+          console.log(input._id)
         } catch (err) {
           console.log(err);
           return res.status(500).json({ error: "failed to create task" });

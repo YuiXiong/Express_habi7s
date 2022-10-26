@@ -10,7 +10,8 @@ const boardSchema = new mongoose.Schema({
     type: Array,
   },
   owner: {
-    type: mongoose.ObjectId ,
+    type: mongoose.Types.ObjectId,
+    ref: "User",
   },
   shared: {
     type: Array,
