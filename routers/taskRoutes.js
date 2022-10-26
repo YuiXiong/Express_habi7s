@@ -2,10 +2,10 @@ const express = require('express')
 const router = express.Router()
 const taskController = require('../controllers/taskController')
 
-// router.post("/", boardController.create);
-// router.get("/", boardController.index)
-// router.get("/:id", boardController.getById)
-// router.patch("/:id", boardController.updateById)
-// router.delete("/:id", boardController.deleteById)
+router.post("/:id/task/", taskController.create);
+// router.get("/", taskController.index)
+// router.get("/:id", taskController.getById)
+// router.patch("/:id", taskController.updateById)
+// router.delete("/:id", taskController.deleteById)
 
 module.exports = router
