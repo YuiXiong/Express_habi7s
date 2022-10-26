@@ -27,17 +27,6 @@ module.exports = {
       return res.status(500).json({ error: "failed to create task" });
     }
 
-    // //update board to have task object id
-    // let board = null
-    // try {
-    //     board = await boardModel.findByIdAndUpdate(req.params.id, {
-    //       tasks: req.body.name,
-    //     });
-    //   } catch (err) {
-    //     res.status(500);
-    //     return res.json({ error: `Fail to get id ${req.params.id}` });
-    //   }
-
     return res.json();
   },
 };
