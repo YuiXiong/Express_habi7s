@@ -6,9 +6,10 @@ const boardSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  tasks: {
-    type: Array,
-  },
+  tasks: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Task"
+  }],
   owner: {
     type: mongoose.Types.ObjectId,
     ref: "User",
