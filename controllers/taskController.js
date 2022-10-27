@@ -34,12 +34,14 @@ module.exports = {
     //index task given board object id. board task is an array of objectID.
 
     try {
-      board = await boardModel.findById(req.params.id).populate('tasks', 'task')
-      console.log(board)
-      } catch {
-      res.send(500).json({error: "failed to return board"});
+      board = await boardModel
+        .findById(req.params.id)
+        .populate("tasks", "task");
+      console.log(board);
+    } catch {
+      res.send(500).json({ error: "failed to return board" });
     }
-    return res.json(board)
+    return res.json(board);
   },
 
   getById: async (req, res) => {
@@ -54,5 +56,20 @@ module.exports = {
     }
     return res.json(task.task);
   },
-  
+
+  updateById: async (req, res) => {
+    let task = null;
+    try {
+      task = await taskModel.updateOne(
+        { _id: req.params.taskId },
+        { task: req.body.task, 
+          quadrant: req.body.quadrant 
+        });
+        //enums validators
+    } catch (err) {
+      res.status(500);
+      return res.json({ error: `Fail to get id ${req.params.taskId}` });
+    }
+    return res.json();
+  },
 };
