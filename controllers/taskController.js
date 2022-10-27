@@ -51,8 +51,8 @@ module.exports = {
     try {
       task = await taskModel.findById(req.params.taskId);
     } catch (err) {
-      res.status(500);
-      return res.json({ error: "failed to return task" });
+      res.send(500).json({ error: "failed to return task" });
+
     }
     return res.json(task.task);
   },
@@ -65,11 +65,30 @@ module.exports = {
         { task: req.body.task, 
           quadrant: req.body.quadrant 
         });
-        //enums validators
+        //enums validators 
+    } catch (err) {
+      res.send(500).json({ error: "failed to return task" });
+    }
+    if (!task) {
+      res.send(404).json({ error: "no such taskID" });
+    }
+    return res.json();
+  },
+
+  deleteById: async (req, res) => {
+    try {
+      await taskModel.findByIdAndDelete(req.params.taskId);
+      await boardModel.findByIdAndUpdate(req.params.id,{
+        $pull:{
+          tasks: req.params.taskId
+        }
+      });
+
     } catch (err) {
       res.status(500);
-      return res.json({ error: `Fail to get id ${req.params.taskId}` });
+      return res.json({ error: `Fail to get id ${req.params.taskid}` });
     }
+
     return res.json();
   },
 };
