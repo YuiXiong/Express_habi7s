@@ -34,18 +34,14 @@ module.exports = {
     //index task given board object id. board task is an array of objectID. to populate and return task.
 
     try {
-      boards = await boardModel.findById(req.params.id);
-      
-      console.log("boards detail: ", boards);
-      let mappingTask=[]
-      mappingTask = boards.tasks.map(task =>{
-        return task
-      })
-      console.log("mappingTask: ", mappingTask)
-    } catch {
-      res.send(500);
-      return res.json({ error: "failed to return board" });
+      board = await boardModel.findById(req.params.id).populate('tasks', 'task')
+      console.log(board)
+
+      } catch {
+      res.send(500).json({error: "failed to return board"});
     }
-    return res.json(boards);
+    return res.json(board)
+
   },
+
 };
