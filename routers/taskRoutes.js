@@ -4,7 +4,7 @@ const taskController = require('../controllers/taskController')
 
 router.post("/:id/task/", taskController.create);
 router.get("/:id/task/", taskController.index)
-// router.get("/:id/task/:taskId", taskController.getById)
+router.get("/:id/task/:taskId", taskController.getById)
 // router.patch("/:id", taskController.updateById)
 // router.delete("/:id", taskController.deleteById)
 
