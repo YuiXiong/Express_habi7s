@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const app = express()
 const port = process.env.PORT || 8000
-
+const connStr = process.env.ATLAS_STRING
 const authRouter = require('./routers/authRoutes')
 const boardRouter = require('./routers/boardRoutes')
 const taskRouter = require('./routers/taskRoutes')
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 app.listen(port, async () => {
     try {
-      await mongoose.connect(process.env.ATLAS_STRING, { dbName: process.env.DB_NAME });
+      await mongoose.connect(connStr,{ dbName: process.env.DB_NAME });
       console.log(`Connected to MongoDB`);
 
     } catch (error) {
