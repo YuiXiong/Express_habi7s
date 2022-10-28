@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 app.listen(port, async () => {
     try {
-      await mongoose.connect(process.env.ATLAS_STRING, { dbName: process.env.DB_NAME });
+      await mongoose.connect(process.env.ATLAS_STRING, { dbName: process.env.DB_NAME,useNewUrlParser: true, useCreateIndex: true });
     } catch (error) {
       console.log(`Failed to connect to DB: ${error}`);
       process.exit(1);
