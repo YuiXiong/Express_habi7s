@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 app.listen(port, async () => {
     try {
-      await mongoose.connect(connStr,{ dbName: process.env.DB_NAME });
+      await mongoose.connect(connStr, { dbName: process.env.DB_NAME });
       console.log(`Connected to MongoDB`);
 
     } catch (error) {
