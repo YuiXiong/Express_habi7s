@@ -21,7 +21,7 @@ module.exports = {
     // const objId = decodedToken.payload.data.objId;
 
     // const input = { ...req.body, owner: objId };
-    const input = { ...req.body, owner: '6356b24e64810b592a0b22ee'};
+    const input = { ...req.body, owner:'6356b24e64810b592a0b22ee'};
     try {
       await boardModel.create(input);
     } catch (err) {
