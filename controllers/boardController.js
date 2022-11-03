@@ -17,11 +17,11 @@ module.exports = {
     }
 
     //to get jwt from FE and pass in as owner
-    const decodedToken = jwt.decode(req.body.owner, { complete: true });
-    const objId = decodedToken.payload.data.objId;
+    // const decodedToken = jwt.decode(req.body.owner, { complete: true });
+    // const objId = decodedToken.payload.data.objId;
 
-    const input = { ...req.body, owner: objId };
-
+    // const input = { ...req.body, owner: objId };
+    const input = { ...req.body, owner: '6356b24e64810b592a0b22ee'};
     try {
       await boardModel.create(input);
     } catch (err) {

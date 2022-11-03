@@ -36,8 +36,8 @@ module.exports = {
     try {
       board = await boardModel
         .findById(req.params.id)
-        .populate("tasks", "task");
-      console.log(board);
+        .populate("tasks","task");
+      console.log("board received:", board);
     } catch {
       res.send(500).json({ error: "failed to return board" });
     }
@@ -54,7 +54,7 @@ module.exports = {
       res.send(500).json({ error: "failed to return task" });
 
     }
-    return res.json(task.task);
+    return res.json(task);
   },
 
   updateById: async (req, res) => {
